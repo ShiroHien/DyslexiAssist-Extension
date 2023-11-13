@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "DyslexiAssist",
+    "version": "1.0",
+    "description": "Enhance web reading experience for users with dyslexia.",
+    "permissions": ["activeTab", "storage"],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["changeFont.js", "minimalistReadingMode.js", "customizeColors.js", "focusMode.js", "textToSpeech.js", "adjustSpacing.js"]
+      }
+    ],
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "icons": {
+      "48": "icon.png"
+    }
+  }
+  
