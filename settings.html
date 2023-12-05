@@ -1,34 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>DyslexiAssist Settings</title>
-    <style>
-        /* Add your CSS styling here */
-    </style>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <!-- Add any additional CSS or links here -->
 </head>
 <body>
-    <h3>Settings</h1>
-    <form id="settingsForm">
-        <label for="fontSelect">Font:</label>
-        <select id="fontSelect">
-            <option value="OpenDyslexic">OpenDyslexic</option>
+    <div id="settingsContainer">
+        <h2>Settings</h2>
+
+        <label for="fontSelection">Choose a font:</label>
+        <select id="fontSelection">
             <option value="Arial">Arial</option>
             <option value="Verdana">Verdana</option>
-            <!-- Add more fonts as needed -->
+            <option value="Times New Roman">Times New Roman</option>
+            <!-- Add more font options as needed -->
         </select>
-        <br><br>
 
-        <label for="bgColor">Background Color:</label>
-        <input type="color" id="bgColor">
-        <br><br>
+        <label for="bgColorSelection">Background Color:</label>
+        <input type="color" id="bgColorSelection" name="bgColorSelection">
 
-        <label for="textColor">Text Color:</label>
-        <input type="color" id="textColor">
-        <br><br>
+        <label for="textColorSelection">Text Color:</label>
+        <input type="color" id="textColorSelection" name="textColorSelection">
 
-        <button type="submit">Save Settings</button>
-    </form>
+        <button id="saveSettings">Save Settings</button>
+    </div>
 
+    <!-- Link to your JavaScript file -->
     <script src="settings.js"></script>
 </body>
 </html>
