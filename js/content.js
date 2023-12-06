@@ -67,3 +67,74 @@ chrome.storage.local.get(['readerMode', 'focusLine'], function(result) {
         toggleFocusLine(result.focusLine);
     }
 });
+
+
+
+// Function to create and return a speaker icon element
+function createSpeakerIcon() {
+    let speakerIcon = document.createElement('div');
+    speakerIcon.id = 'speakerIcon';
+    speakerIcon.style.position = 'absolute';
+    speakerIcon.style.zIndex = '1000';
+    speakerIcon.style.display = 'none'; // Initially hidden
+    speakerIcon.textContent = '🔊'; // Using emoji as an example
+    speakerIcon.style.fontSize = '2em'; // Make the icon twice as big
+    speakerIcon.style.backgroundColor = 'white'; // White background
+    speakerIcon.style.borderRadius = '50%'; // Optional: makes it circular
+    speakerIcon.style.padding = '5px'; // Add some padding around the icon
+    // Add more styling as needed
+    return speakerIcon;
+}
+
+
+// Append the speaker icon to the body
+let speakerIcon = createSpeakerIcon();
+document.body.appendChild(speakerIcon);
+
+// Function to show the speaker icon near the text selection
+function showSpeakerIcon() {
+    let selection = window.getSelection();
+    if (!selection.rangeCount) return;
+
+    let range = selection.getRangeAt(0);
+    let rect = range.getBoundingClientRect();
+
+    // Position the icon at the top right of the selection
+    speakerIcon.style.left = `${rect.right + window.scrollX}px`; // Right of the selection
+    speakerIcon.style.top = `${rect.top + window.scrollY - speakerIcon.offsetHeight}px`; // Above the selection
+    speakerIcon.style.display = 'block';
+}
+
+// Function to read text using Web Speech API
+function speak(text) {
+    if ('speechSynthesis' in window) {
+        var utterance = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utterance);
+    } else {
+        console.log("Your browser does not support text-to-speech.");
+    }
+}
+
+// Event listener for the speaker icon click
+speakerIcon.addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent the click from triggering other event listeners
+    let text = window.getSelection().toString();
+    if (text) {
+        speak(text);
+    }
+});
+
+// Event listener for text selection
+document.addEventListener('mouseup', function(event) {
+    let selectedText = window.getSelection().toString().trim();
+    if (selectedText) {
+        chrome.storage.local.get(['textToSpeechEnabled'], function(result) {
+            if (result.textToSpeechEnabled) {
+                showSpeakerIcon();
+            }
+        });
+    } else {
+        speakerIcon.style.display = 'none'; 
+    }
+});
+

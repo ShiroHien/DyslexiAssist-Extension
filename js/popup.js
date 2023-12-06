@@ -61,6 +61,21 @@ document.getElementById('focusLineToggle').addEventListener('change', function(e
 });
 
 
+// Save the TTS state when toggled
+document.getElementById('textToSpeechToggle').addEventListener('change', function(event) {
+    chrome.storage.local.set({textToSpeechEnabled: event.target.checked});
+});
+
+// Set the toggle state when the popup is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    chrome.storage.local.get(['textToSpeechEnabled'], function(result) {
+        if (result.textToSpeechEnabled !== undefined) {
+            document.getElementById('textToSpeechToggle').checked = result.textToSpeechEnabled;
+        }
+    });
+});
+
+
 
 // FOOTER
 document.getElementById('settingsIcon').addEventListener('click', function() {
