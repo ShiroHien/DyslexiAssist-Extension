@@ -19,6 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    chrome.storage.local.get(['font'], function(result) {
+        if (result.font) {
+            applyFontChangeToUI(result.font);
+        }
+    });
+
 
 
 });
@@ -75,6 +81,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+document.getElementById('fontSelect').addEventListener('change', function(event) {
+    let selectedFont = event.target.value;
+
+    // Save the font to chrome.storage.local
+    chrome.storage.local.set({font: selectedFont}, function() {
+        console.log('Font setting saved:', selectedFont);
+    });
+
+    // Apply font change to the UI
+    applyFontChangeToUI(selectedFont);
+
+    // Send a message to content script to update the font immediately
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {action: "changeFont", font: selectedFont});
+    });
+});
+
+function applyFontChangeToUI(fontName) {
+    document.documentElement.style.fontFamily = fontName;
+}
 
 
 // FOOTER

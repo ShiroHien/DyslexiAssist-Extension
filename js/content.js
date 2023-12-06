@@ -138,3 +138,23 @@ document.addEventListener('mouseup', function(event) {
     }
 });
 
+
+chrome.storage.local.get(['font'], function(result) {
+    if (result.font) {
+        applyFontChange(result.font);
+    }
+});
+
+function applyFontChange(fontName) {
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = `
+        @font-face {
+            font-family: '${fontName}';
+            src: url('fonts/${fontName}/${fontName}.ttf') format('opentype');
+        }
+        body, p, h1, h2, h3, h4, h5, h6, span, a, div {
+            font-family: '${fontName}', sans-serif !important;
+        }
+    `;
+    document.head.appendChild(styleElement);
+}
