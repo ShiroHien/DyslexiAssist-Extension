@@ -5,7 +5,7 @@ function changeFontToOpenDyslexic() {
     styleElement.innerHTML = `
         @font-face {
             font-family: 'OpenDyslexic';
-            src: url('https://cdn.jsdelivr.net/gh/antijingoist/open-dyslexic/fonts/OpenDyslexic-Regular.otf') format('opentype');
+            src: url('fonts/OpenDyslexic/OpenDyslexic.ttf') format('opentype');
         }
         body, p, h1, h2, h3, h4, h5, h6, span, a, div {
             font-family: 'OpenDyslexic', sans-serif !important;

@@ -4,27 +4,18 @@
     "version": "1.0",
     "description": "Enhance web reading experience for users with dyslexia.",
     "permissions": ["activeTab", "storage"],
-    "background": {
-      "scripts": ["js/background.js"],
-      "persistent": false
-    },
+  
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "css": ["css/style.css"],
-        "js": ["js/adjustSpacing.js",
-              "js/background.js",
-              "js/changeFont.js",
-              "js/content.js",
-              "js/customizeColors.js",
-              "js/focusMode.js",
-              "js/minimalistReadingMode.js",
-              "js/settings.js",
-              "js/textToSpeech.js"]
+        "js": ["js/changeFont.js",
+              "js/popup.js",
+              "js/content.js"]
       }
     ],
+    "options_page": "options.html",
     "browser_action": {
-      "default_popup": "settings.html",
+      "default_popup": "popup.html",
       "default_icon": "icon.png"
     },
     "icons": {

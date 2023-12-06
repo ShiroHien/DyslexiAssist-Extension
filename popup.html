@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popup</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            DyslexiAssist
+        </div>
+    </header>
+    <div class="container">
+
+        <!-- On/Off -->
+        <div class="item"><img src="image/OnOffIcon.png" width="50px"></div>
+        <div class="item">On</div>
+        <div class="item">
+            <label class="switch">
+                <input type="checkbox" id="onOffToggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <!-- Reader Mode -->
+        <div class="item"><img src="image/ReaderModeIcon.png" width="40px" ></div>
+        <div class="item">Reader Mode</div>
+        <div class="item">
+            <label class="switch">
+                <input type="checkbox" id="readerModeToggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <!-- Focus Line -->
+        <div class="item"><img src="image/FontIcon.png" width="30px"></div>
+        <div class="item">Focus Line</div>
+        <div class="item">
+            <label class="switch">
+                <input type="checkbox" id="focusLineToggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <!-- Text To Speech -->
+        <div class="item"><img src="image/TextToSpeechIcon.png" width="35px"></div>
+        <div class="item">Text To Speech</div>
+        <div class="item">
+            <label class="switch">
+                <input type="checkbox" id="textToSpeechToggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <img src="image/SettingsIcon.png" id="settingsIcon" width="30px" class="footer-icon">
+            <img src="image/SupportIcon.png" id="supportIcon" width="30px" class="footer-icon">
+        </div>
+    </footer>
+
+    <!-- Link to your JavaScript file -->
+    <script src="js/popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extension Options</title>
+    <link rel="stylesheet" href="css/options.css"> <!-- Link to your CSS file for styling -->
+</head>
+<body>
+    <h1>DyslexiAssist</h1>
+    <form id="optionsForm">
+        <!-- Font Selection -->
+        <img src="image/FontIcon.png" width="20px">
+        <label for="fontSelect">Font:</label>
+        <select id="fontSelect">
+            <option value="OpenDyslexic">OpenDyslexic</option>
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+            <!-- Add more fonts as needed -->
+        </select>
+
+        <br>
+        <!-- Font Size Selection -->
+        <label for="sizeSelect">Size:</label>
+        <select id="sizeSelect">
+            <option value="12px">12px</option>
+            <option value="14px">14px</option>
+            <option value="16px">16px</option>
+            <!-- Add more sizes as needed -->
+        </select>
+
+        <br>
+        <!-- Word Spacing -->
+        <label for="spacingSlider">Spacing:</label>
+        <input type="range" id="spacingSlider" min="0" max="50">
+
+        <br>
+        <!-- Interline (Line Height) -->
+        <label for="interlineSlider">Interline:</label>
+        <input type="range" id="interlineSlider" min="1" max="3" step="0.1">
+
+        <br>
+        <!-- Text Color -->
+        <label for="textColorPicker">Text Color:</label>
+        <input type="color" id="textColorPicker">
+
+        <br>
+        <!-- Background Color -->
+        <label for="bgColorPicker">Background Color:</label>
+        <input type="color" id="bgColorPicker">
+
+        <br> 
+        <button type="submit">Save Settings</button>
+    </form>
+
+    <script src="js/options.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
